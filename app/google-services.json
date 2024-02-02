@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "486942319333",
+    "project_id": "markerediting30",
+    "storage_bucket": "markerediting30.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:486942319333:android:ddfcf3056b2105e9586a0c",
+        "android_client_info": {
+          "package_name": "com.example.markerediting30"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCAVKsMp-RWx9OGPUrh07MVEqQeHYEQBcc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
