@@ -172,8 +172,14 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
                 Marker marker = googleMap.addMarker(markerOptions);
                 markers.add(marker);
-
                 animateCameraToMarker(currentLocation);
+                if(currentIndex==0){
+                    selectedMarker=marker;
+                    selectedMarker.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW));
+                    selectedMarker.setDraggable(true);
+                }
+
+
                 currentIndex++;
                 addMarker();
             }
@@ -185,15 +191,12 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(markerPosition, zoomLevel);
         googleMap.animateCamera(cameraUpdate);
     }
-// Modify the import statements if needed
-
-// Existing code...
-
     private void saveMarkersToFirebaseStorage(String selectedFileName) {
         if(selectedFileName.isEmpty()){
             showToast("No selected file.please select a file first.");
         }
-        String folderName = "AbhishekT/" + selectedFileName + "_" + getCurrentDateTime() + ".csv";
+        String fileNmeWithoutExtention=selectedFileName.replace(".csv","");
+        String folderName = "AbhishekT/" + fileNmeWithoutExtention + "_" + getCurrentDateTime() + ".csv";
         FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference storageRef = storage.getReference().child(folderName);
 
@@ -262,7 +265,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         }
 
         try {
-            String fileName = "Edited_coordinates_" + getCurrentDateTime() ;
+            String fileName = selectedFileName  ;
             File file = new File(getExternalFilesDir(null), fileName);
 
             FileOutputStream fileOut = new FileOutputStream(file);
